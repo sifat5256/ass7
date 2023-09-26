@@ -94,8 +94,7 @@ class _ProductListState extends State<ProductList> {
 
         ],
       ),
-        floatingActionButton :FloatingActionButton(
-
+      floatingActionButton :FloatingActionButton(
 
         onPressed: () {
           Navigator.push(
