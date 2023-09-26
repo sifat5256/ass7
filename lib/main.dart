@@ -63,56 +63,56 @@ class _ProductListState extends State<ProductList> {
 
   @override
   Widget build(BuildContext context) {
-    return Column(
-      children: [
-        Expanded(
-          child: ListView.builder(
-            itemCount: products.length,
-            itemBuilder: (BuildContext context, int index) {
-              return ListTile(
-                title: Text(
-                  products[index].name,
-                  style: TextStyle(fontSize: 20, fontWeight: FontWeight.w700),
-                ),
-                subtitle: Text('\$${products[index].price}'),
-                trailing: ProductCounter(
-                  product: products[index],
-                  onBuyNowPressed: () {
-                    setState(() {
-                      products[index].incrementCounter();
-                      if (products[index].counter == 5) {
-                        _showCongratulationsDialog(products[index]);
-                      }
-                    });
-                  },
-                ),
-              );
-            },
-          ),
-        ),
-        Align(
-          alignment: Alignment.bottomRight,
-          child: FloatingActionButton(
-
-
-            onPressed: () {
-              Navigator.push(
-                context,
-                MaterialPageRoute(
-                  builder: (context) => CartPage(
-                    cartItems: products.where((product) => product.counter > 0).toList(),
+    return Scaffold(
+      body: Column(
+        children: [
+          Expanded(
+            child: ListView.builder(
+              itemCount: products.length,
+              itemBuilder: (BuildContext context, int index) {
+                return ListTile(
+                  title: Text(
+                    products[index].name,
+                    style: TextStyle(fontSize: 20, fontWeight: FontWeight.w700),
                   ),
-                ),
-              );
-            },
-
-            child: Icon(
-              Icons.shopping_cart,
-              size: 29,
+                  subtitle: Text('\$${products[index].price}'),
+                  trailing: ProductCounter(
+                    product: products[index],
+                    onBuyNowPressed: () {
+                      setState(() {
+                        products[index].incrementCounter();
+                        if (products[index].counter == 5) {
+                          _showCongratulationsDialog(products[index]);
+                        }
+                      });
+                    },
+                  ),
+                );
+              },
             ),
           ),
+
+        ],
+      ),
+        floatingActionButton :FloatingActionButton(
+
+
+        onPressed: () {
+          Navigator.push(
+            context,
+            MaterialPageRoute(
+              builder: (context) => CartPage(
+                cartItems: products.where((product) => product.counter > 0).toList(),
+              ),
+            ),
+          );
+        },
+
+        child: Icon(
+          Icons.shopping_cart,
+          size: 29,
         ),
-      ],
+      ),
     );
   }
 
