@@ -90,23 +90,26 @@ class _ProductListState extends State<ProductList> {
             },
           ),
         ),
-        FloatingActionButton(
+        Align(
+          alignment: Alignment.bottomRight,
+          child: FloatingActionButton(
 
 
-          onPressed: () {
-            Navigator.push(
-              context,
-              MaterialPageRoute(
-                builder: (context) => CartPage(
-                  cartItems: products.where((product) => product.counter > 0).toList(),
+            onPressed: () {
+              Navigator.push(
+                context,
+                MaterialPageRoute(
+                  builder: (context) => CartPage(
+                    cartItems: products.where((product) => product.counter > 0).toList(),
+                  ),
                 ),
-              ),
-            );
-          },
+              );
+            },
 
-          child: Icon(
-            Icons.shopping_cart,
-            size: 29,
+            child: Icon(
+              Icons.shopping_cart,
+              size: 29,
+            ),
           ),
         ),
       ],
