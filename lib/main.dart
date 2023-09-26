@@ -90,7 +90,9 @@ class _ProductListState extends State<ProductList> {
             },
           ),
         ),
-        ElevatedButton(
+        FloatingActionButton(
+
+
           onPressed: () {
             Navigator.push(
               context,
@@ -101,9 +103,7 @@ class _ProductListState extends State<ProductList> {
               ),
             );
           },
-          style: ElevatedButton.styleFrom(
-            shape: CircleBorder(),
-          ),
+
           child: Icon(
             Icons.shopping_cart,
             size: 29,
